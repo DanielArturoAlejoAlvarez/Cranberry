@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+
+    <img class="img-responsive" width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-body">
+
+          <form (submit)="addTask($event)">
+            <div class="input-group">
+                <input type="text" name="title" [(ngModel)]="title" placeholder="Add Task" class="form-control">
+                <span class="input-group-addon">
+                  <input type="submit" class="btn btn-primary" value="Add Task">
+                </span>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+      <h1>Tasks</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Operations</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td><input type="checkbox" [checked]="task.isDone" (click)="updateStatus(task)"></td>
+            <td>{{ task.title }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteTask(task._id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
